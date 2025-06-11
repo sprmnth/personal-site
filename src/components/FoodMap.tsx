@@ -6,7 +6,10 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 // Fix default marker icon issue
-delete (L.Icon.Default.prototype as unknown as { _getIconUrl: () => string })._getIconUrl;
+const IconProto = L.Icon.Default.prototype as { _getIconUrl?: () => string };
+if (IconProto._getIconUrl) {
+  delete IconProto._getIconUrl;
+}
 L.Icon.Default.mergeOptions({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
@@ -27,7 +30,6 @@ interface Props {
 
 export default function FoodMap({ places, selected }: Props) {
   useEffect(() => {
-    // Needed to ensure Leaflet CSS loads in Next.js correctly
     import('leaflet/dist/leaflet.css');
   }, []);
 
