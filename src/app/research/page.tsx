@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Research() {
   const [showAbstract, setShowAbstract] = useState(false);
@@ -8,6 +9,11 @@ export default function Research() {
   return (
     <main className="min-h-screen bg-white text-[#1a1a1a] font-sans antialiased px-6 py-24">
       <div className="max-w-2xl mx-auto space-y-12">
+        {/* Back to Home */}
+        <Link href="/" className="text-sm text-blue-600 underline hover:text-blue-800">
+          ← Back to Home
+        </Link>
+
         <h1 className="text-4xl font-semibold mb-6">Research</h1>
 
         <div className="space-y-2 border-b pb-6">
