@@ -42,8 +42,15 @@ const placesByCity = {
 // Flatten all places for the map
 const allPlaces = Object.values(placesByCity).flat();
 
+type Place = {
+  name: string;
+  lat: number;
+  lng: number;
+  review: string;
+};
+
 export default function FoodPage() {
-  const [selectedPlace, setSelectedPlace] = useState<typeof places[0] | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
 
   return (
     <main className="min-h-screen bg-white text-[#1a1a1a] font-sans antialiased px-6 py-24">
@@ -90,7 +97,3 @@ export default function FoodPage() {
     </main>
   );
 }
-
-
-
-
