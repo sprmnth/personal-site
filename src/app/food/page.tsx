@@ -43,7 +43,7 @@ const placesByCity = {
 const allPlaces = Object.values(placesByCity).flat();
 
 export default function FoodPage() {
-  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [selectedPlace, setSelectedPlace] = useState<typeof places[0] | null>(null);
 
   return (
     <main className="min-h-screen bg-white text-[#1a1a1a] font-sans antialiased px-6 py-24">
@@ -90,3 +90,7 @@ export default function FoodPage() {
     </main>
   );
 }
+
+
+
+
