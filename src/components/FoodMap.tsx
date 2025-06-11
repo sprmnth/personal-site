@@ -1,15 +1,9 @@
 'use client';
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Fix default marker icon issue
-const IconProto = L.Icon.Default.prototype as { _getIconUrl?: () => string };
-if (IconProto._getIconUrl) {
-  delete IconProto._getIconUrl;
-}
 L.Icon.Default.mergeOptions({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
@@ -29,8 +23,6 @@ interface Props {
 }
 
 export default function FoodMap({ places, selected }: Props) {
-
-
   const center = selected
     ? [selected.lat, selected.lng]
     : [22.9734, 78.6569]; // Center of India
