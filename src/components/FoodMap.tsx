@@ -29,9 +29,7 @@ interface Props {
 }
 
 export default function FoodMap({ places, selected }: Props) {
-  useEffect(() => {
-    import('leaflet/dist/leaflet.css');
-  }, []);
+
 
   const center = selected
     ? [selected.lat, selected.lng]
